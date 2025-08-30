@@ -17,3 +17,5 @@ jobs:
               Issue State: ${issue.state}
             `;
             return output;
+      - name: Display issue information
+        run: echo "${{ steps.get_issue_info.outputs.result }}"
