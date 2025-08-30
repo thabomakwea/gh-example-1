@@ -1,0 +1,19 @@
+name: Output information
+on:
+  issues:
+    types: [opened, edited, milestoned]
+jobs:
+  output:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get issue information
+        uses: actions/github-script@v5
+        with:
+          script: |
+            const issue = context.payload.issue;
+            const output = `
+              Issue Title: ${issue.title}
+              Issue Body: ${issue.body}
+              Issue State: ${issue.state}
+            `;
+            return output;
